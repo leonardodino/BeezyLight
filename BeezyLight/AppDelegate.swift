@@ -1,4 +1,5 @@
 import Cocoa
+import SimplyCoreAudio
 
 enum Icon {
     static let idle = NSImage(systemSymbolName: "mic", accessibilityDescription: nil)
@@ -6,10 +7,18 @@ enum Icon {
     static let error = NSImage(systemSymbolName: "mic.slash", accessibilityDescription: nil)
 }
 
+enum State: Equatable {
+    case idle
+    case busy
+    case error
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
-    private var audioListenerId = -1
-    var blinkStick: BlinkStick?
-    var statusItem: NSStatusItem?
+    private let notificationCenter = NotificationCenter.default
+    private var simplyCA: SimplyCoreAudio?
+    private var blinkStick: BlinkStick?
+    private var statusItem: NSStatusItem?
+    private var state: State = .error
 
     @objc func quit() {
         NSApplication.shared.terminate(self)
@@ -21,38 +30,49 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(AppDelegate.quit), keyEquivalent: "q"))
         statusItem?.menu = menu
-        statusItem?.button?.image = Icon.error
+        render()
 
+        simplyCA = SimplyCoreAudio()
         blinkStick = BlinkStick()
-
-        updateMicStatus()
-        audioListenerId = Audio.shared.addDeviceStateListener { [weak self] in
-            self?.updateMicStatus()
-        }
-    }
-
-    private func updateMicStatus() {
-        print(
-            """
-            isRunning: \(Audio.shared.isRunning.description)
-            device: \(Audio.shared.inputDeviceName ?? "nil")
-            """
-        )
-
-        if Audio.shared.inputDevice == nil {
-            statusItem?.button?.image = Icon.error
-            blinkStick?.setColor(r: 255, g: 0, b: 255)
-        } else if Audio.shared.isRunning {
-            statusItem?.button?.image = Icon.busy
-            blinkStick?.setColor(r: 255, g: 0, b: 0)
-        } else {
-            statusItem?.button?.image = Icon.idle
-            blinkStick?.setColor(r: 0, g: 0, b: 0)
-        }
+        startMicrophoneListener()
     }
 
     func applicationWillTerminate(_: Notification) {
         blinkStick?.setColor(r: 0, g: 0, b: 0)
-        Audio.shared.removeDeviceStateListener(listenerId: audioListenerId)
+    }
+}
+
+extension AppDelegate {
+    private func render() {
+        switch state {
+        case .idle:
+            statusItem?.button?.image = Icon.idle
+            blinkStick?.setColor(r: 0, g: 0, b: 0)
+        case .busy:
+            statusItem?.button?.image = Icon.busy
+            blinkStick?.setColor(r: 255, g: 0, b: 0)
+        case .error:
+            statusItem?.button?.image = Icon.error
+            blinkStick?.setColor(r: 255, g: 0, b: 255)
+        }
+    }
+
+    private func setState(_ nextState: State) {
+        if state != nextState {
+            state = nextState
+            render()
+        }
+    }
+
+    private func startMicrophoneListener() {
+        let listener = Debouncer(delay: 0.01) { [self] in
+            let isBusy = simplyCA?.allInputDevices.contains(where: \.isRunningSomewhere) ?? false
+            setState(isBusy ? .busy : .idle)
+        }
+
+        listener()
+        notificationCenter.addObserver(forName: .deviceIsRunningSomewhereDidChange, object: nil, queue: .main) { _ in
+            listener()
+        }
     }
 }
