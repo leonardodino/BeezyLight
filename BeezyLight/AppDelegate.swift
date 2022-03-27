@@ -21,13 +21,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var state: State = .error
 
     @objc func quit() {
-        NSApplication.shared.terminate(self)
+        NSApp.terminate(self)
+    }
+
+    @objc func about() {
+        NSApp.orderFrontStandardAboutPanel(self)
+        NSApp.activate(ignoringOtherApps: true)
     }
 
     func applicationDidFinishLaunching(_: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") ?? ""
         let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "About \(appName)", action: #selector(AppDelegate.about), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(AppDelegate.quit), keyEquivalent: "q"))
         statusItem?.menu = menu
         render()
