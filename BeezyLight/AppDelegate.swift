@@ -13,6 +13,7 @@ enum State: Equatable {
     case error
 }
 
+@main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private let notificationCenter = NotificationCenter.default
     private var simplyCA: SimplyCoreAudio?

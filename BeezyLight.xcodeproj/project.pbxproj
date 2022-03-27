@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1E127C5632D00768B18 /* AppDelegate.swift */; };
 		96C2A1E627C5632E00768B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96C2A1E527C5632E00768B18 /* Assets.xcassets */; };
-		96C2A1F127C567BD00768B18 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1F027C567BD00768B18 /* main.swift */; };
 		96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1F327C567C300768B18 /* BlinkStick.swift */; };
 		96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5B44727C57CE300C4FFCA /* Debouncer.swift */; };
 		96D5B44E27C57E1900C4FFCA /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; productRef = 96D5B44D27C57E1900C4FFCA /* SimplyCoreAudio */; };
+		96DC603527F0F7D000A5FE00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC603427F0F7D000A5FE00 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +21,9 @@
 		96C2A1E127C5632D00768B18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96C2A1E527C5632E00768B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96C2A1EA27C5632E00768B18 /* BeezyLight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeezyLight.entitlements; sourceTree = "<group>"; };
-		96C2A1F027C567BD00768B18 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		96C2A1F327C567C300768B18 /* BlinkStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkStick.swift; sourceTree = "<group>"; };
 		96D5B44727C57CE300C4FFCA /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		96DC603427F0F7D000A5FE00 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,13 +57,13 @@
 		96C2A1E027C5632D00768B18 /* BeezyLight */ = {
 			isa = PBXGroup;
 			children = (
-				96C2A1F027C567BD00768B18 /* main.swift */,
 				96C2A1E127C5632D00768B18 /* AppDelegate.swift */,
 				96C2A1F327C567C300768B18 /* BlinkStick.swift */,
 				96D5B44727C57CE300C4FFCA /* Debouncer.swift */,
 				96C2A1E527C5632E00768B18 /* Assets.xcassets */,
 				96C2A1EA27C5632E00768B18 /* BeezyLight.entitlements */,
 				96A53DDC27C572B9002DA809 /* Info.plist */,
+				96DC603427F0F7D000A5FE00 /* Main.storyboard */,
 			);
 			path = BeezyLight;
 			sourceTree = "<group>";
@@ -132,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DC603527F0F7D000A5FE00 /* Main.storyboard in Resources */,
 				96C2A1E627C5632E00768B18 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,7 +147,6 @@
 				96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */,
 				96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */,
 				96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */,
-				96C2A1F127C567BD00768B18 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +282,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BeezyLight/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,6 +310,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BeezyLight/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
