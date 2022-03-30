@@ -26,8 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func about() {
-        NSApp.orderFrontStandardAboutPanel(self)
-        NSApp.activate(ignoringOtherApps: true)
+        AboutWindow.show()
     }
 
     func applicationDidFinishLaunching(_: Notification) {
