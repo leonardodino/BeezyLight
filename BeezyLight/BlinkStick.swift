@@ -32,7 +32,7 @@ class BlinkStick {
 
     func onConnected(_ deviceRef: IOHIDDevice) {
         device = deviceRef
-        setColor(r: data[0], g: data[1], b: data[2])
+        setColor(r: data[1], g: data[2], b: data[3])
     }
 
     func onDisconnected() {
@@ -53,7 +53,6 @@ class BlinkStick {
             IOHIDManagerRegisterDeviceMatchingCallback(manager, matchingCallback, pointer)
             IOHIDManagerRegisterDeviceRemovalCallback(manager, removalCallback, pointer)
             IOHIDManagerOpen(manager, 0)
-            print()
             RunLoop.current.run()
         }
     }
