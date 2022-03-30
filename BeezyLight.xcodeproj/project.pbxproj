@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		962377FE27F4ECD8002D718F /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962377FD27F4ECD8002D718F /* StatusItem.swift */; };
 		96B8901227F4E78D00C39B4A /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8901127F4E78D00C39B4A /* AboutWindow.swift */; };
 		96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1E127C5632D00768B18 /* AppDelegate.swift */; };
 		96C2A1E627C5632E00768B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96C2A1E527C5632E00768B18 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		962377FD27F4ECD8002D718F /* StatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
 		96A53DDC27C572B9002DA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		96B8901127F4E78D00C39B4A /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		96C2A1DE27C5632D00768B18 /* BeezyLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeezyLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				96C2A1E127C5632D00768B18 /* AppDelegate.swift */,
+				962377FD27F4ECD8002D718F /* StatusItem.swift */,
 				96B8901127F4E78D00C39B4A /* AboutWindow.swift */,
 				96C2A1F327C567C300768B18 /* BlinkStick.swift */,
 				96D5B44727C57CE300C4FFCA /* Debouncer.swift */,
@@ -149,6 +152,7 @@
 			files = (
 				96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */,
 				96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */,
+				962377FE27F4ECD8002D718F /* StatusItem.swift in Sources */,
 				96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */,
 				96B8901227F4E78D00C39B4A /* AboutWindow.swift in Sources */,
 			);

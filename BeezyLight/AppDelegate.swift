@@ -1,12 +1,6 @@
 import Cocoa
 import SimplyCoreAudio
 
-enum Icon {
-    static let idle = NSImage(systemSymbolName: "mic", accessibilityDescription: nil)
-    static let busy = NSImage(systemSymbolName: "mic.fill", accessibilityDescription: nil)
-    static let error = NSImage(systemSymbolName: "mic.slash", accessibilityDescription: nil)
-}
-
 enum State: Equatable {
     case idle
     case busy
@@ -18,25 +12,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let notificationCenter = NotificationCenter.default
     private var simplyCA: SimplyCoreAudio?
     private var blinkStick: BlinkStick?
-    private var statusItem: NSStatusItem?
+    private var statusItem: StatusItem?
     private var state: State = .error
 
-    @objc func quit() {
-        NSApp.terminate(self)
-    }
-
-    @objc func about() {
-        AboutWindow.show()
-    }
-
     func applicationDidFinishLaunching(_: Notification) {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-
-        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") ?? ""
-        let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "About \(appName)", action: #selector(AppDelegate.about), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(AppDelegate.quit), keyEquivalent: "q"))
-        statusItem?.menu = menu
+        statusItem = StatusItem()
         render()
 
         simplyCA = SimplyCoreAudio()
@@ -53,13 +33,13 @@ extension AppDelegate {
     private func render() {
         switch state {
         case .idle:
-            statusItem?.button?.image = Icon.idle
+            statusItem?.setIcon(.idle)
             blinkStick?.setColor(r: 0, g: 0, b: 0)
         case .busy:
-            statusItem?.button?.image = Icon.busy
+            statusItem?.setIcon(.busy)
             blinkStick?.setColor(r: 255, g: 0, b: 0)
         case .error:
-            statusItem?.button?.image = Icon.error
+            statusItem?.setIcon(.error)
             blinkStick?.setColor(r: 255, g: 0, b: 255)
         }
     }
