@@ -1,15 +1,5 @@
 import Cocoa
 
-fileprivate func createMenu(_ itemCreators: [(_ menuItem: NSMenuItem) -> Void]) -> NSMenu {
-    let menu = NSMenu()
-    itemCreators.forEach { createItem in
-        let item = NSMenuItem()
-        createItem(item)
-        menu.addItem(item)
-    }
-    return menu
-}
-
 class StatusItem {
     enum StateIcon {
         case idle
@@ -28,20 +18,28 @@ class StatusItem {
     private let instance = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
     init() {
-        instance.menu = createMenu([{
-            let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") ?? ""
-            $0.title = "About \(appName)"
-            $0.action = #selector(AboutWindow.show)
-            $0.target = AboutWindow.shared
-        }, {
-            $0.title = "Quit"
-            $0.keyEquivalent = "q"
-            $0.action = #selector(NSApp.terminate)
-            $0.target = NSApp
-        }])
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") ?? ""
+        instance.menu = NSMenu([
+            NSMenuItem("About \(appName)", action: #selector(AboutWindow.show), target: AboutWindow.shared),
+            NSMenuItem("Quit", action: #selector(NSApp.terminate), keyEquivalent: "q"),
+        ])
     }
     
     func setIcon(_ icon: StateIcon) {
         instance.button?.image = icon.image
+    }
+}
+
+fileprivate extension NSMenuItem {
+    convenience init(_ title: String, action: Selector, target: AnyObject? = nil, keyEquivalent: String = "") {
+        self.init(title: title, action: action, keyEquivalent: keyEquivalent)
+        self.target = target
+    }
+}
+
+fileprivate extension NSMenu {
+    convenience init(_ items: [NSMenuItem]) {
+        self.init()
+        items.forEach { self.addItem($0) }
     }
 }
