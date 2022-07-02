@@ -1,65 +1,32 @@
 name: Build
 
 on:
-  push:
-    branches: ['main']
-  pull_request: 
-    branches: ['main']
-  create:
-    tags: ['v[0-9]+.[0-9]+.[0-9]+']
+  push: { branches: ['main'] }
+  pull_request: { branches: ['main'] }
 
 jobs:
   build:
     name: Xcode Build
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
+      - name: Select Xcode Version
+        run: sudo xcrun xcode-select -s /Applications/Xcode_13.4.app
+
+      - name: Set Environment Variables
+        run: 'echo "XCARCHIVE_PATH=${PWD}/BeezyLight.xcarchive" >> $GITHUB_ENV'
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set Build Version
-        if: ${{ github.ref_type == 'tag' }}
-        run: 'agvtool new-marketing-version "${GITHUB_REF_NAME#v}" && agvtool new-version -all "$GITHUB_RUN_NUMBER"'
+      - name: Run xcode-build Script
+        run: './Scripts/xcode-build build "$XCARCHIVE_PATH"'
 
-      - name: Run xcodebuild
-        run: 'xcodebuild -workspace ./BeezyLight.xcodeproj/project.xcworkspace -scheme BeezyLight -configuration Release -destination "generic/platform=macOS" -archivePath "$PWD/build/Release/BeezyLight.xcarchive" archive'
-
-      - name: Compress app bundle
-        run: 'ditto -c -k --sequesterRsrc --keepParent "build/Release/BeezyLight.xcarchive/Products/Applications/BeezyLight.app" "build/Release/BeezyLight.zip"'
-
-      - name: Upload app artifact
+      - name: Upload Archive to Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: app
-          path: build/Release/BeezyLight.zip
+          name: BeezyLight.xcarchive
+          path: ${{ env.XCARCHIVE_PATH }}
+          if-no-files-found: error
 
-      - name: Create Release
-        if: ${{ github.ref_type == 'tag' }}
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref_name }}
-          release_name: ${{ github.ref_name }}
-          draft: true
-          prerelease: false
-
-      - name: Upload Release Asset
-        if: ${{ github.ref_type == 'tag' }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/Release/BeezyLight.zip
-          asset_name: BeezyLight.zip
-          asset_content_type: application/zip
-
-      - name: Publish Release
-        if: ${{ github.ref_type == 'tag' }}
-        run: "hub release edit --draft=false -m '' \"${GITHUB_REF_NAME}\""
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
- 
+      - name: Check Git Status
+        run: git status --porcelain

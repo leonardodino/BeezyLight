@@ -1,2 +1,4 @@
 xcuserdata/
-build/
+*.xcarchive
+*.zip
+Release.xcconfig
