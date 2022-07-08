@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RELEASE_CONFIG_PATH="${PWD}/BeezyLight/Release.xcconfig"
+RELEASE_CONFIG_PATH="${PWD}/Config/Release.xcconfig"
 
 USAGE="Usage:
   $(basename "$0") <bundle-id> <marketing-version> <build-version> <development-team>

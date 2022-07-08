@@ -1,7 +1,7 @@
 name: Release
 
 on:
-  create: { tags: ['v[0-9]+.[0-9]+.[0-9]+'] }
+  push: { tags: ['v[0-9]+.[0-9]+.[0-9]+'] }
 
 jobs:
   release:
@@ -9,11 +9,12 @@ jobs:
     runs-on: macos-12
     steps:
       - name: Select Xcode Version
-        run: sudo xcrun xcode-select -s /Applications/Xcode_13.4.app
+        run: sudo xcrun xcode-select -s /Applications/Xcode_13.4.1.app
 
       - name: Set Environment Variables
         run: |
           APP_NAME="BeezyLight"
+          echo "APP_NAME=${APP_NAME}" >> $GITHUB_ENV
 
           echo "XCARCHIVE_PATH=${PWD}/${APP_NAME}.xcarchive" >> $GITHUB_ENV
           echo "APP_PATH=${PWD}/${APP_NAME}.xcarchive/Products/Applications/${APP_NAME}.app" >> $GITHUB_ENV
@@ -83,14 +84,14 @@ jobs:
       - name: Upload App to Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: BeezyLight
+          name: ${{ env.APP_NAME }}
           path: ${{ env.ZIP_PATH }}
           if-no-files-found: error
 
       - name: Upload Archive to Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: BeezyLight.xcarchive
+          name: ${{ env.APP_NAME }}.xcarchive
           path: ${{ env.XCARCHIVE_PATH }}
           if-no-files-found: error
 
@@ -115,7 +116,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{ env.ZIP_PATH }}
-          asset_name: BeezyLight.zip
+          asset_name: ${{ env.APP_NAME }}.zip
           asset_content_type: application/zip
 
       - name: Publish Release

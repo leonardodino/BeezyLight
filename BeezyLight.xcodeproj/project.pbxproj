@@ -20,8 +20,12 @@
 /* Begin PBXFileReference section */
 		961F0D2F286F9F8400D35EB3 /* Default.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Default.xcconfig; sourceTree = "<group>"; };
 		962377FD27F4ECD8002D718F /* StatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
-		96A53DDC27C572B9002DA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		96A53DDC27C572B9002DA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96B8901127F4E78D00C39B4A /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		96B9AA4828774C1A00175C2A /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		96B9AA4928774C1A00175C2A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		96B9AA4B28774C3800175C2A /* xcode-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "xcode-build"; sourceTree = "<group>"; };
+		96B9AA4C28774C3800175C2A /* generate-release-config */ = {isa = PBXFileReference; lastKnownFileType = text; path = "generate-release-config"; sourceTree = "<group>"; };
 		96C2A1DE27C5632D00768B18 /* BeezyLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeezyLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C2A1E127C5632D00768B18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96C2A1E527C5632E00768B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,10 +47,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96B9AA4428774A2100175C2A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				96DC603427F0F7D000A5FE00 /* Main.storyboard */,
+				96C2A1E127C5632D00768B18 /* AppDelegate.swift */,
+				962377FD27F4ECD8002D718F /* StatusItem.swift */,
+				96B8901127F4E78D00C39B4A /* AboutWindow.swift */,
+				96C2A1F327C567C300768B18 /* BlinkStick.swift */,
+				96D5B44727C57CE300C4FFCA /* Debouncer.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		96B9AA4528774AE200175C2A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				96C2A1EA27C5632E00768B18 /* BeezyLight.entitlements */,
+				96A53DDC27C572B9002DA809 /* Info.plist */,
+				961F0D2F286F9F8400D35EB3 /* Default.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		96B9AA4A28774C3800175C2A /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				96B9AA4B28774C3800175C2A /* xcode-build */,
+				96B9AA4C28774C3800175C2A /* generate-release-config */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		96B9AA4D28774C5F00175C2A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				96C2A1E527C5632E00768B18 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		96C2A1D527C5632D00768B18 = {
 			isa = PBXGroup;
 			children = (
-				96C2A1E027C5632D00768B18 /* BeezyLight */,
+				96B9AA4D28774C5F00175C2A /* Assets */,
+				96B9AA4528774AE200175C2A /* Config */,
+				96B9AA4A28774C3800175C2A /* Scripts */,
+				96B9AA4428774A2100175C2A /* Sources */,
+				96B9AA4828774C1A00175C2A /* LICENSE */,
+				96B9AA4928774C1A00175C2A /* README.md */,
 				96C2A1DF27C5632D00768B18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,23 +106,6 @@
 				96C2A1DE27C5632D00768B18 /* BeezyLight.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		96C2A1E027C5632D00768B18 /* BeezyLight */ = {
-			isa = PBXGroup;
-			children = (
-				96C2A1E127C5632D00768B18 /* AppDelegate.swift */,
-				962377FD27F4ECD8002D718F /* StatusItem.swift */,
-				96B8901127F4E78D00C39B4A /* AboutWindow.swift */,
-				96C2A1F327C567C300768B18 /* BlinkStick.swift */,
-				96D5B44727C57CE300C4FFCA /* Debouncer.swift */,
-				96C2A1E527C5632E00768B18 /* Assets.xcassets */,
-				96C2A1EA27C5632E00768B18 /* BeezyLight.entitlements */,
-				96A53DDC27C572B9002DA809 /* Info.plist */,
-				96DC603427F0F7D000A5FE00 /* Main.storyboard */,
-				961F0D2F286F9F8400D35EB3 /* Default.xcconfig */,
-			);
-			path = BeezyLight;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,12 +316,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BeezyLight/BeezyLight.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Config/BeezyLight.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BeezyLight/Info.plist;
+				INFOPLIST_FILE = Config/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2020 Leonardo Dino\nAll rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -310,12 +342,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BeezyLight/BeezyLight.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Config/BeezyLight.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BeezyLight/Info.plist;
+				INFOPLIST_FILE = Config/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2020 Leonardo Dino\nAll rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;

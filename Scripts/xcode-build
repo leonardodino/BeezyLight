@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-RELEASE_CONFIG_PATH="${PWD}/BeezyLight/Release.xcconfig"
-SCHEME="BeezyLight"
+RELEASE_CONFIG_PATH="${PWD}/Config/Release.xcconfig"
+SCHEME="$("$(dirname "$0")/get-scheme")"
 WORKSPACE="./${SCHEME}.xcodeproj/project.xcworkspace"
 
 USAGE="Usage:\n$(basename "$0") [release|build] [archive-path]"
