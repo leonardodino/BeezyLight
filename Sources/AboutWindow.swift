@@ -34,7 +34,7 @@ class AboutWindow {
             .credits: join([
                 BasicLink(
                     text: "Source Code",
-                    href: "https://github.com/beezylight/BeezyLight",
+                    href: "https://github.com/leonardodino/BeezyLight",
                     font: NSFont.systemFont(ofSize: 12, weight: .medium)
                 ),
                 NSAttributedString(
