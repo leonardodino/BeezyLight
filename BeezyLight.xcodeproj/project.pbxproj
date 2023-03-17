@@ -8,18 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		962377FE27F4ECD8002D718F /* StatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962377FD27F4ECD8002D718F /* StatusItem.swift */; };
+		965A05CB29C5212400559377 /* AudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A05CA29C5212400559377 /* AudioDevice.swift */; };
+		965A05CD29C5214000559377 /* AudioObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A05CC29C5214000559377 /* AudioObject.swift */; };
+		965A05CF29C5224000559377 /* AudioSystemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A05CE29C5224000559377 /* AudioSystemObject.swift */; };
+		965A05D129C522C000559377 /* AudioObjectProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A05D029C522C000559377 /* AudioObjectProperty.swift */; };
+		965A05D329C524F100559377 /* AudioBufferListWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965A05D229C524F100559377 /* AudioBufferListWrapper.swift */; };
 		96B8901227F4E78D00C39B4A /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8901127F4E78D00C39B4A /* AboutWindow.swift */; };
 		96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1E127C5632D00768B18 /* AppDelegate.swift */; };
 		96C2A1E627C5632E00768B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96C2A1E527C5632E00768B18 /* Assets.xcassets */; };
 		96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1F327C567C300768B18 /* BlinkStick.swift */; };
+		96D07DC629D7974B009C2C23 /* AudioInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D07DC529D7974B009C2C23 /* AudioInput.swift */; };
 		96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5B44727C57CE300C4FFCA /* Debouncer.swift */; };
-		96D5B44E27C57E1900C4FFCA /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; productRef = 96D5B44D27C57E1900C4FFCA /* SimplyCoreAudio */; };
 		96DC603527F0F7D000A5FE00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC603427F0F7D000A5FE00 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		961F0D2F286F9F8400D35EB3 /* Default.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Default.xcconfig; sourceTree = "<group>"; };
 		962377FD27F4ECD8002D718F /* StatusItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItem.swift; sourceTree = "<group>"; };
+		965A05CA29C5212400559377 /* AudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDevice.swift; sourceTree = "<group>"; };
+		965A05CC29C5214000559377 /* AudioObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioObject.swift; sourceTree = "<group>"; };
+		965A05CE29C5224000559377 /* AudioSystemObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSystemObject.swift; sourceTree = "<group>"; };
+		965A05D029C522C000559377 /* AudioObjectProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioObjectProperty.swift; sourceTree = "<group>"; };
+		965A05D229C524F100559377 /* AudioBufferListWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBufferListWrapper.swift; sourceTree = "<group>"; };
 		96A53DDC27C572B9002DA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96B8901127F4E78D00C39B4A /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 		96B9AA4828774C1A00175C2A /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -31,6 +41,7 @@
 		96C2A1E527C5632E00768B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96C2A1EA27C5632E00768B18 /* BeezyLight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeezyLight.entitlements; sourceTree = "<group>"; };
 		96C2A1F327C567C300768B18 /* BlinkStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkStick.swift; sourceTree = "<group>"; };
+		96D07DC529D7974B009C2C23 /* AudioInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInput.swift; sourceTree = "<group>"; };
 		96D5B44727C57CE300C4FFCA /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		96DC603427F0F7D000A5FE00 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,22 +51,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96D5B44E27C57E1900C4FFCA /* SimplyCoreAudio in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		965A05C929C520F700559377 /* SFBAudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				965A05D029C522C000559377 /* AudioObjectProperty.swift */,
+				965A05D229C524F100559377 /* AudioBufferListWrapper.swift */,
+				965A05CA29C5212400559377 /* AudioDevice.swift */,
+				965A05CC29C5214000559377 /* AudioObject.swift */,
+				965A05CE29C5224000559377 /* AudioSystemObject.swift */,
+			);
+			path = SFBAudioEngine;
+			sourceTree = "<group>";
+		};
 		96B9AA4428774A2100175C2A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				965A05C929C520F700559377 /* SFBAudioEngine */,
 				96DC603427F0F7D000A5FE00 /* Main.storyboard */,
 				96C2A1E127C5632D00768B18 /* AppDelegate.swift */,
 				962377FD27F4ECD8002D718F /* StatusItem.swift */,
 				96B8901127F4E78D00C39B4A /* AboutWindow.swift */,
 				96C2A1F327C567C300768B18 /* BlinkStick.swift */,
 				96D5B44727C57CE300C4FFCA /* Debouncer.swift */,
+				96D07DC529D7974B009C2C23 /* AudioInput.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -125,7 +149,6 @@
 			);
 			name = BeezyLight;
 			packageProductDependencies = (
-				96D5B44D27C57E1900C4FFCA /* SimplyCoreAudio */,
 			);
 			productName = BeezyLight;
 			productReference = 96C2A1DE27C5632D00768B18 /* BeezyLight.app */;
@@ -156,7 +179,6 @@
 			);
 			mainGroup = 96C2A1D527C5632D00768B18;
 			packageReferences = (
-				96D5B44C27C57E1900C4FFCA /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */,
 			);
 			productRefGroup = 96C2A1DF27C5632D00768B18 /* Products */;
 			projectDirPath = "";
@@ -184,10 +206,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965A05CF29C5224000559377 /* AudioSystemObject.swift in Sources */,
 				96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */,
 				96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */,
+				965A05CB29C5212400559377 /* AudioDevice.swift in Sources */,
+				965A05CD29C5214000559377 /* AudioObject.swift in Sources */,
 				962377FE27F4ECD8002D718F /* StatusItem.swift in Sources */,
 				96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */,
+				965A05D129C522C000559377 /* AudioObjectProperty.swift in Sources */,
+				965A05D329C524F100559377 /* AudioBufferListWrapper.swift in Sources */,
+				96D07DC629D7974B009C2C23 /* AudioInput.swift in Sources */,
 				96B8901227F4E78D00C39B4A /* AboutWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +346,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Config/BeezyLight.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -344,6 +373,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Config/BeezyLight.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -384,25 +414,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		96D5B44C27C57E1900C4FFCA /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rnine/SimplyCoreAudio.git";
-			requirement = {
-				kind = revision;
-				revision = a76df85c7188f6cbb5b49392632bb65f2e112a4c;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		96D5B44D27C57E1900C4FFCA /* SimplyCoreAudio */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96D5B44C27C57E1900C4FFCA /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */;
-			productName = SimplyCoreAudio;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 96C2A1D627C5632D00768B18 /* Project object */;
 }
