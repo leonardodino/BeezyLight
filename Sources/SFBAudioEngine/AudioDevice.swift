@@ -99,3 +99,20 @@ extension AudioObjectSelector where T == AudioDevice {
     /// The property selector `kAudioDevicePropertyDeviceIsRunningSomewhere`
     public static let isRunningSomewhere = AudioObjectSelector(kAudioDevicePropertyDeviceIsRunningSomewhere)
 }
+
+// MARK: - BeezyLight Extensions
+
+extension AudioDevice {
+    public class func inputDevices() -> Set<AudioDevice>? {
+        let devices = try? AudioDevice.devices()
+        let inputs = try? devices?.filter { try $0.supportsInput() }
+        guard let inputs else { return nil }
+        return Set(inputs)
+    }
+}
+
+extension Set where Element == AudioDevice {
+    func isRunningSomewhere() -> Bool? {
+        return try? self.contains { try $0.isRunningSomewhere() }
+    }
+}

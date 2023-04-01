@@ -1,13 +1,23 @@
 import Foundation
+import CoreAudio
+import Cocoa
 
 public extension Notification.Name {
     static let deviceIsRunningSomewhereDidChange = Self("deviceIsRunningSomewhereDidChange")
 }
 
-
 final class AudioInput {
-    private var devices: Set<AudioDevice>
     private var callback: (Bool) -> Void
+    private var devices: Set<AudioDevice> {
+        didSet {
+            let added = devices.subtracting(oldValue)
+            added.forEach { device in
+                try? device.whenSelectorChanges(.isRunningSomewhere) { _ in
+                    NotificationCenter.default.post(name: .deviceIsRunningSomewhereDidChange, object: nil)
+                }
+            }
+        }
+    }
     
     init(_ callback: @escaping (Bool) -> Void) {
         self.devices = Set()
@@ -15,25 +25,16 @@ final class AudioInput {
     }
 
     private func updateDeviceList() {
-        let input = try? AudioDevice.devices().filter({ try $0.supportsInput() })
-        guard let input else { return }
-        let inputs = Set(input)
-        if (self.devices == inputs) { return }
+        let devices = AudioDevice.inputDevices()
+        guard let devices else { return }
+        guard devices != self.devices else { return }
 
-        let added = inputs.subtracting(self.devices)
-        added.forEach { device in
-            try? device.whenSelectorChanges(.isRunningSomewhere) { _ in
-                NotificationCenter.default.post(name: .deviceIsRunningSomewhereDidChange, object: nil)
-            }
-        }
-
-        self.devices = inputs
+        self.devices = devices
     }
     
     private lazy var listener = Debouncer(delay: 0.5) { [weak self] in
         guard let self else { return }
-        let isRunningSomewhere = try? self.devices.contains { try $0.isRunningSomewhere() }
-        self.callback(isRunningSomewhere ?? false)
+        self.callback(self.devices.isRunningSomewhere() ?? false)
     }
 
     func startListener() {
