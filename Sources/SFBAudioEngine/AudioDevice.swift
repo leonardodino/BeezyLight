@@ -48,6 +48,14 @@ public class AudioDevice: AudioObject {
 
 // MARK: - Audio Device Base Properties
 
+extension AudioDevice {
+    /// Returns the transport type
+    /// - remark: This corresponds to the property `kAudioDevicePropertyTransportType`
+    public func transportType() throws -> UInt32 {
+        return try getProperty(PropertyAddress(kAudioDevicePropertyTransportType), type: UInt32.self)
+    }
+}
+
 // MARK: - Audio Device Properties
 
 extension AudioDevice {
@@ -108,6 +116,15 @@ extension AudioDevice {
         let inputs = try? devices?.filter { try $0.supportsInput() }
         guard let inputs else { return nil }
         return Set(inputs)
+    }
+
+    var isBluetooh: Bool {
+        guard let transport = try? transportType() else { return false }
+        switch(transport){
+            case(kAudioDeviceTransportTypeBluetooth): return true
+            case(kAudioDeviceTransportTypeBluetoothLE): return true
+            default: return false
+        }
     }
 }
 
