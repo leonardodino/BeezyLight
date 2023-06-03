@@ -6,10 +6,10 @@ on:
 jobs:
   release:
     name: Xcode Build (Release)
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
       - name: Select Xcode Version
-        run: sudo xcrun xcode-select -s /Applications/Xcode_14.2.app
+        run: sudo xcrun xcode-select -s /Applications/Xcode_14.3.app
 
       - name: Set Environment Variables
         run: |
@@ -33,7 +33,7 @@ jobs:
       - name: Install Developer ID Certificate
         run: |
           # import build certificate from secrets
-          echo -n "${{ secrets.BUILD_CERTIFICATE_BASE64 }}" | base64 --decode --output "$BUILD_CERTIFICATE_PATH"
+          echo -n "${{ secrets.BUILD_CERTIFICATE_BASE64 }}" | base64 --decode --output="$BUILD_CERTIFICATE_PATH"
 
           # create temporary keychain
           security create-keychain -p "${{ secrets.KEYCHAIN_PASSWORD }}" "$KEYCHAIN_PATH"
@@ -52,7 +52,7 @@ jobs:
       - name: Notarize App
         run: |
           # Save Notarization Credentials to Keychain
-          echo -n "${{ secrets.NOTARIZATION_KEY_BASE64 }}" | base64 --decode --output "$NOTARIZATION_KEY_PATH"
+          echo -n "${{ secrets.NOTARIZATION_KEY_BASE64 }}" | base64 --decode --output="$NOTARIZATION_KEY_PATH"
           xcrun notarytool store-credentials "AppNotarization" \
             -k "$NOTARIZATION_KEY_PATH" \
             -d "${{ secrets.NOTARIZATION_KEY_ID }}" \
