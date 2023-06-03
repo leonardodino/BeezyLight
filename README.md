@@ -17,4 +17,3 @@
 #### ✦&ensp;install:
 1. download lastest version [**here**](https://github.com/leonardodino/BeezyLight/releases/latest/download/BeezyLight.zip)
 2. unzip and move `BeezyLight.app` to `/Applications`
-3. add to [**Login Items**](https://support.apple.com/en-gb/guide/mac-help/mh15189/mac) to launch it automatically after login in **(optional)**
