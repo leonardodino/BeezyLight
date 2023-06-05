@@ -1,5 +1,4 @@
 import Cocoa
-import ServiceManagement
 
 fileprivate extension NSApplication {
     var quitMenuItem: NSMenuItem {
@@ -24,19 +23,17 @@ class StatusItem {
     
     private let instance = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
-    private lazy var menu: NSMenu = {
-        let menu = NSMenu()
-        menu.addItem(AboutWindow.shared.menuItem)
-        if #available(macOS 13.0, *) {
-            menu.addItem(LaunchAtLogin.shared.menuItem)
-            menu.addItem(NSMenuItem.separator())
-        }
-        menu.addItem(NSApplication.shared.quitMenuItem)
-        return menu
-    }()
-    
     init() {
-        instance.menu = menu
+        instance.menu = {
+            let menu = NSMenu()
+            menu.addItem(AboutWindow.shared.menuItem)
+            if #available(macOS 13.0, *) {
+                menu.addItem(LaunchAtLogin.shared.menuItem)
+                menu.addItem(NSMenuItem.separator())
+            }
+            menu.addItem(NSApplication.shared.quitMenuItem)
+            return menu
+        }()
     }
     
     func setIcon(_ icon: StateIcon) {

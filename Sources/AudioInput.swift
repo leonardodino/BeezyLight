@@ -1,5 +1,3 @@
-import Foundation
-import CoreAudio
 import Cocoa
 
 public extension Notification.Name {

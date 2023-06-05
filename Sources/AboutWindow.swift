@@ -31,7 +31,7 @@ class AboutWindow {
     let menuItem: NSMenuItem
     private init() {
         let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") ?? ""
-        menuItem = NSMenuItem(title: "About \(appName)", action: #selector(AboutWindow.show), keyEquivalent: "")
+        menuItem = NSMenuItem(title: "About \(appName)", action: #selector(show), keyEquivalent: "")
         menuItem.target = self
     }
     @objc func show() {

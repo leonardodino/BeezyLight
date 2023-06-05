@@ -7,7 +7,7 @@ final class LaunchAtLogin {
     private(set) var menuItem: NSMenuItem
     
     private init() {
-        menuItem = NSMenuItem(title: "Launch at login", action: #selector(LaunchAtLogin.toggle), keyEquivalent: "")
+        menuItem = NSMenuItem(title: "Launch at login", action: #selector(toggle), keyEquivalent: "")
         menuItem.target = self
         menuItem.state = state
     }

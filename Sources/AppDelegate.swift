@@ -8,7 +8,6 @@ enum State: Equatable {
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    private let notificationCenter = NotificationCenter.default
     private var blinkStick: BlinkStick?
     private var statusItem: StatusItem?
     private var audioInput: AudioInput?
