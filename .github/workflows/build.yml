@@ -1,8 +1,8 @@
 name: Build
 
 on:
-  push: { branches: ['main'] }
-  pull_request: { branches: ['main'] }
+  push: { branches: ['alpha', 'beta', 'main'] }
+  pull_request: { branches: ['alpha', 'beta', 'main'] }
 
 jobs:
   build:
