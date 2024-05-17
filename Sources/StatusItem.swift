@@ -27,6 +27,7 @@ class StatusItem {
         instance.menu = {
             let menu = NSMenu()
             menu.addItem(AboutWindow.shared.menuItem)
+            menu.addItem(BLEBeaconManager.shared.menuItem)
             if #available(macOS 13.0, *) {
                 menu.addItem(LaunchAtLogin.shared.menuItem)
                 menu.addItem(NSMenuItem.separator())

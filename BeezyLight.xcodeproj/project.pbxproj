@@ -17,10 +17,11 @@
 		96B8901227F4E78D00C39B4A /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8901127F4E78D00C39B4A /* AboutWindow.swift */; };
 		96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1E127C5632D00768B18 /* AppDelegate.swift */; };
 		96C2A1E627C5632E00768B18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96C2A1E527C5632E00768B18 /* Assets.xcassets */; };
-		96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C2A1F327C567C300768B18 /* BlinkStick.swift */; };
 		96D07DC629D7974B009C2C23 /* AudioInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D07DC529D7974B009C2C23 /* AudioInput.swift */; };
 		96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5B44727C57CE300C4FFCA /* Debouncer.swift */; };
 		96DC603527F0F7D000A5FE00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC603427F0F7D000A5FE00 /* Main.storyboard */; };
+		96F790FF2BE681FF00ED3242 /* BLEBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F790FE2BE681FF00ED3242 /* BLEBeacon.swift */; };
+		96F791012BE6C52D00ED3242 /* BLEBeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F791002BE6C52D00ED3242 /* BLEBeaconManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +43,11 @@
 		96C2A1E127C5632D00768B18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96C2A1E527C5632E00768B18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96C2A1EA27C5632E00768B18 /* BeezyLight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeezyLight.entitlements; sourceTree = "<group>"; };
-		96C2A1F327C567C300768B18 /* BlinkStick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkStick.swift; sourceTree = "<group>"; };
 		96D07DC529D7974B009C2C23 /* AudioInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInput.swift; sourceTree = "<group>"; };
 		96D5B44727C57CE300C4FFCA /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		96DC603427F0F7D000A5FE00 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		96F790FE2BE681FF00ED3242 /* BLEBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEBeacon.swift; sourceTree = "<group>"; };
+		96F791002BE6C52D00ED3242 /* BLEBeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEBeaconManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +82,8 @@
 				962377FD27F4ECD8002D718F /* StatusItem.swift */,
 				96B8901127F4E78D00C39B4A /* AboutWindow.swift */,
 				966385462A2BF0420092FC62 /* LaunchAtLogin.swift */,
-				96C2A1F327C567C300768B18 /* BlinkStick.swift */,
+				96F790FE2BE681FF00ED3242 /* BLEBeacon.swift */,
+				96F791002BE6C52D00ED3242 /* BLEBeaconManager.swift */,
 				96D5B44727C57CE300C4FFCA /* Debouncer.swift */,
 				96D07DC529D7974B009C2C23 /* AudioInput.swift */,
 			);
@@ -165,7 +168,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					96C2A1DD27C5632D00768B18 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -210,13 +213,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				965A05CF29C5224000559377 /* AudioSystemObject.swift in Sources */,
-				96C2A1F527C567C300768B18 /* BlinkStick.swift in Sources */,
 				96C2A1E227C5632D00768B18 /* AppDelegate.swift in Sources */,
 				966385472A2BF0420092FC62 /* LaunchAtLogin.swift in Sources */,
 				965A05CB29C5212400559377 /* AudioDevice.swift in Sources */,
+				96F790FF2BE681FF00ED3242 /* BLEBeacon.swift in Sources */,
 				965A05CD29C5214000559377 /* AudioObject.swift in Sources */,
 				962377FE27F4ECD8002D718F /* StatusItem.swift in Sources */,
 				96D5B44827C57CE300C4FFCA /* Debouncer.swift in Sources */,
+				96F791012BE6C52D00ED3242 /* BLEBeaconManager.swift in Sources */,
 				965A05D129C522C000559377 /* AudioObjectProperty.swift in Sources */,
 				965A05D329C524F100559377 /* AudioBufferListWrapper.swift in Sources */,
 				96D07DC629D7974B009C2C23 /* AudioInput.swift in Sources */,
@@ -265,6 +269,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -327,6 +332,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

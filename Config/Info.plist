@@ -4,5 +4,7 @@
 <dict>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This application advertises microphone usage as an BLE Beacon (iBeacon)</string>
 </dict>
 </plist>

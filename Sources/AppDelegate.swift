@@ -8,7 +8,7 @@ enum State: Equatable {
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    private var blinkStick: BlinkStick?
+    private var beacon = BLEBeaconManager.shared
     private var statusItem: StatusItem?
     private var audioInput: AudioInput?
     private var state: State = .error
@@ -18,14 +18,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         audioInput = AudioInput{ self.setState($0 ? .busy : .idle) }
         render()
 
-        blinkStick = BlinkStick()
+        beacon.load()
         DispatchQueue.main.async {
             self.audioInput?.startListener()
         }
     }
     
     func applicationWillTerminate(_: Notification) {
-        blinkStick?.setColor(r: 0, g: 0, b: 0)
+        beacon.stop()
     }
 }
 
@@ -34,13 +34,13 @@ extension AppDelegate {
         switch state {
             case .idle:
                 statusItem?.setIcon(.idle)
-                blinkStick?.setColor(r: 0, g: 0, b: 0)
+                beacon.stop()
             case .busy:
                 statusItem?.setIcon(.busy)
-                blinkStick?.setColor(r: 255, g: 0, b: 0)
+                beacon.start()
             case .error:
                 statusItem?.setIcon(.error)
-                blinkStick?.setColor(r: 255, g: 0, b: 255)
+                beacon.stop()
         }
     }
     
